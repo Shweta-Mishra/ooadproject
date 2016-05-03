@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts  Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="disha" extends="struts-default,json-default"
+		namespace="/">
+		<action name="BrowseProduct" class="flipkart.action.BrowseProduct">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/BrowseProduct.jsp</result>
+
+		</action>
+		
+<action name="BrowseProductSort" class="flipkart.action.BrowseProduct" method="sort">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/BrowseProductSort.jsp</result>
+
+		</action>
+
+
+		<action name="BrowseProductOnFilters" class="flipkart.action.BrowseProductOnFilters">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success" type="json"></result>
+
+		</action>
+
+		<action name="BrowseProductLast" class="flipkart.action.BrowseProduct"
+			method="fetchLast">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/BrowseProduct.jsp</result>
+
+		</action>
+		<!-- <action name="ProductDetail" class="flipkart.action.ProductDetail"> 
+			<interceptor-ref name="fileUpload"> <param name="allowedTypes">image/png,image/gif,image/jpeg</param> 
+			</interceptor-ref> <interceptor-ref name="defaultStack" /> <result name="success" 
+			type="json"></result> </action> -->
+
+	</package>
+	<package name="default" extends="json-default,struts-default">
+		<action name="searchAction" class="flipkart.action.AutoCompleteAction">
+			<result type="json"></result>
+		</action>
+
+
+		<action name="getProductDetail" class="flipkart.action.Search2Action">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">images/png,images/gif,images/jpeg,images/jpg</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/BrowseProduct.jsp</result>
+			<result name="disha">/BrowseProduct.jsp</result>
+			<result name="vijiya">/Description.jsp</result>
+			<result name="noproduct">/productnoFound.jsp</result>
+			<result name="error">/Error.jsp</result>
+
+		</action>
+	</package>
+
+	<constant name="struts.mapper.action.prefix.enabled" value="true" />
+	<package name="Stock" extends="struts-default">
+		<action name="InsertProduct" class="flipkart.action.InsertProductAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/AdminBody.jsp</result>
+			<result name="failure">/stock.jsp</result>
+
+		</action>
+
+		<action name="getCategoryMapping" class="flipkart.action.GetCategoryMappingAction"
+			method="execute">
+			<result name="success">/CategoryMapping.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		
+		
+		
+		
+		<action name="OfferProduct" class="flipkart.action.OfferZone"
+			method="addOfferProduct">
+			<result name="success">/offer.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		
+		
+		<action name="Offer_name" class="flipkart.action.OfferZone"
+			method="addOffer">
+			<result name="success">/offer.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		
+		
+		<action name="CallOfferZone" class="flipkart.action.OfferZone">
+			<result name="success">/offer.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		<action name="sellersInfo" class="flipkart.action.SellersInfoAction"
+			method="execute">
+			<result name="success">/AdminBody.jsp</result>
+			<result name="failure">/stock.jsp</result>
+			<result name="input">/stock.jsp</result>
+		</action>
+		<action name="insertUpperCategory" class="flipkart.action.UppercategoryAction"
+			method="execute">
+			<result name="success">/AdminBody.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="insertCategory" class="flipkart.action.CategoryAction"
+			method="execute">
+			<result name="success">/AdminBody.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="insertSubCategory" class="flipkart.action.SubCategoryAction"
+			method="execute">
+			<result name="success">/AdminBody.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="insertLastCategory" class="flipkart.action.LastCategoryAction"
+			method="execute">
+			<result name="success">/AdminBody.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+
+		<action name="getDetailSellerProduct" class="flipkart.action.GetSellerProductAction"
+			method="execute">
+			<result name="success">/sellerProduct.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+
+		<action name="InsertCategoryMapping" class="flipkart.action.InsertCategoryMappingAction"
+			method="execute">
+			<result name="success">/AdminBody.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="InsertSellerProduct" class="flipkart.action.InsertSellerProductAction"
+			method="execute">
+			<result name="success">/AdminBody.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<!-- new added -->
+		<action name="getCategory" class="flipkart.action.GetCategoryAction"
+			method="execute">
+			<result name="success">/category.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="getSubCategory" class="flipkart.action.SubCategoryAction"
+			method="get">
+			<result name="success">/SubCategory.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="getuppercategory" class="flipkart.action.UppercategoryAction"
+			method="get">
+			<result name="success">/uppercategory.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="getLastCategory" class="flipkart.action.LastCategoryAction"
+			method="get">
+			<result name="success">/LastCategory.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="getProduct" class="flipkart.action.InsertProductAction"
+			method="get">
+			<result name="success">/stock.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="getSeller" class="flipkart.action.SellersInfoAction"
+			method="get">
+			<result name="success">/seller.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+
+		<action name="InsertBySeller" class="flipkart.action.GetSellerProductAction"
+			method="get">
+			<result name="success">/SellerAccount.jsp</result>
+			<result name="failure">/error.jsp</result>
+		</action>
+		<action name="updateProductInfo" class="flipkart.action.InsertSellerProductAction"
+			method="get">
+			<result name="success">/sellerBody.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="getSellerInfo" class="flipkart.action.GetSellerAction"
+			method="execute">
+			<result name="success">/SellerProfile.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="updateSellerinfo" class="flipkart.action.UpdateSellerAction"
+			method="execute">
+			<result name="success">/sellerBody.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="getOrderID" class="flipkart.action.UpdateSellerAction"
+			method="get">
+			<result name="success">/TIME.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		<action name="Shipped" class="flipkart.action.UpdateSellerAction"
+			method="ship">
+			<result name="success">/sellerBody.jsp</result>
+			<result name="failure">/test.jsp</result>
+		</action>
+		
+	</package>
+	<package name="fetchcategory" extends="json-default">
+		<action name="fetchcat" class="flipkart.action.Showcategory">
+			<result type="json"></result>
+		</action>
+	</package>
+	<package name="Login" extends="struts-default" namespace="/">
+
+		<action name="LoginAction" class="flipkart.action.LoginAction"
+			method="execute">
+			<result name="user">Home.jsp</result>
+			<result name="admin">AdminBody.jsp</result>
+			<result name="seller">sellerBody.jsp</result>
+			<result name="error">Home.jsp</result>
+		</action>
+
+	</package>
+	<package name="Signup" extends="struts-default" namespace="/">
+		<action name="SignupAction" class="flipkart.action.SignupAction"
+			method="execute">
+			<result name="user">Home.jsp</result>
+			<result name="error">Home.jsp</result>
+		</action>
+	</package>
+	<package name="Logout" extends="struts-default" namespace="/">
+		<action name="Logout" class="flipkart.action.LogoutAction"
+			method="execute">
+			<result name="logout">Home.jsp</result>
+			<result name="error">Home.jsp</result>
+		</action>
+
+	</package>
+	<package name="vandana" extends="json-default">
+
+
+		<!-- <action name="fetch" class="flipkart.action.FetchPersonalInfo" method="fetchinfo"> 
+			<result name="success">/Personal_info.jsp</result> <result name="error">Error.jsp</result> 
+			</action> -->
+		<action name="get" class="flipkart.action.FetchPersonalInfo"
+			method="getinfo">
+			<result name="success">/Personal_info.jsp</result>
+			<result name="error">Error.jsp</result>
+		</action>
+
+		<action name="update" class="flipkart.action.UpdatePersonal_Info"
+			method="updateinfo">
+			<result name="success">/Personal_info.jsp</result>
+		</action>
+
+		<action name="updatepass" class="flipkart.action.UpdatePersonal_Info"
+			method="executechangepass">
+			<result name="success">/Change_Password.jsp</result>
+			<result name="error">/Error.jsp</result>
+		</action>
+
+		<action name="updatemail" class="flipkart.action.UpdatePersonal_Info"
+			method="executemail">
+			<result name="success">/main.jsp</result>
+			<result name="error">/Error.jsp</result>
+		</action>
+
+		<action name="fetchaddress" class="flipkart.action.GetUserAddress"
+			method="getaddresses">
+			<result name="success">/Addresses.jsp</result>
+			<result name="error">/Error.jsp</result>
+		</action>
+
+		<action name="updateaddress" class="flipkart.action.UpdateAddress"
+			method="updateaddresses">
+			<result name="success">/Addresses.jsp</result>
+			<result name="error">/Error.jsp</result>
+		</action>
+
+		<action name="DeactivateAccountFromDB" class="flipkart.action.Deactive_acc"
+			method="Deactiveaccount">
+			<result name="success">/Deactive_Account.jsp</result>
+			<result name="error">/Error.jsp</result>
+		</action>
+
+		<action name="check_user_password" class="flipkart.action.UpdatePersonal_Info"
+			method="Validate">
+			<result name="success" type="json"></result>
+		</action>
+
+		<action name="notification" class="flipkart.action.Notification"
+			method="Nonotification">
+			<result name="success">/Notification.jsp</result>
+			<result name="error">NoNotification.jsp</result>
+		</action>
+
+		<action name="check_note" class="flipkart.action.Notification"
+			method="notification">
+			<result name="success">/ajaxreturn.jsp</result>
+			<result name="unsuccess">/ajax_error.jsp</result>
+		</action>
+
+	</package>
+	<!-- struts of Track Order Cancell Order !!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+	<package name="TrackOrder" extends="struts-default">
+		<action name="TrackOrder" class="flipkart.action.TrackOrder">
+			<result name="success">/TrackOrder.jsp</result>
+		</action>
+
+		<action name="getOrderDetail" class="flipkart.action.TrackOrder"
+			method="getOrderDetail">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/OrderDetails.jsp</result>
+		</action>
+
+
+
+	</package>
+	<package name="Track" extends="json-default">
+		<action name="cancel11" class="flipkart.action.TrackOrder"
+			method="cancelOrder">
+			<result name="success">/OrderDetails.jsp</result>
+		</action>
+	</package>
+
+
+	<package name="recievedOrder" extends="json-default">
+		<action name="recieved" class="flipkart.action.TrackOrder"
+			method="recievedOrder">
+			<result name="success">/OrderDetails.jsp</result>
+		</action>
+	</package>
+
+
+
+	<package name="fetchcategory" extends="json-default">
+		<action name="fetchcat" class="flipkart.action.Showcategory">
+			<result type="json"></result>
+		</action>
+	</package>
+	<!-- end of Track ORder !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+
+
+	<package name="dhruv" extends="struts-default,json-default">
+		<action name="productSample" class="flipkart.action.productDescription"
+			method="execute">
+			<result name="success">Description.jsp</result>
+			<result name="failure">Description.jsp</result>
+		</action>
+
+		<action name="WriteaReview" class="flipkart.action.productDescription"
+			method="WriteReview">
+			<result name="success">Description.jsp</result>
+			<result name="failure">Description.jsp</result>
+		</action>
+		<action name="DelFromCart" class="flipkart.action.productDescription"
+			method="DeleteCartItem">
+			<result name="success">ThankYou.jsp</result>
+			<result name="failure">Description.jsp</result>
+		</action>
+		<action name="sellerBalance" class="flipkart.action.PayMentAction"
+			method="sellerBalance">
+			<result name="success">sellerAcccont.jsp</result>
+			<result name="failure">sellerAcccont.jsp</result>
+		</action>
+		<action name="sellerBalance1" class="flipkart.action.PayMentAction"
+			method="sellerBalance1">
+			<result name="success">result.jsp</result>
+			<result name="failure">sellerAcccont.jsp</result>
+		</action>
+
+		<action name="Make_Credit_Payment" class="flipkart.action.PayMentAction"
+			method="execute">
+			<result type="json"></result>
+		</action>
+
+		<action name="Make_Debit_Payment" class="flipkart.action.PayMentAction"
+			method="Debit">
+			<result type="json"></result>
+		</action>
+
+		<action name="Make_Bank_Payment" class="flipkart.action.PayMentAction"
+			method="NetBanking">
+			<result type="json"></result>
+		</action>
+
+		<action name="updateTotal" class="flipkart.action.deliveryProduct"
+			method="Total">
+			<result type="json"></result>
+
+		</action>
+		<action name="VerifyEmail" class="flipkart.action.AddDetailAction"
+			method="execute">
+			<result type="json"></result>
+		</action>
+		<action name="CartVerify" class="flipkart.action.AddDetailAction"
+			method="CartCheck">
+			<result name="success">/DelieveryDetail.jsp</result>
+			<result name="failure">/CartLogin.jsp</result>
+		</action>
+
+		<action name="deliveryAdd" class="flipkart.action.deliveryProduct"
+			method="execute">
+			<result name="success">email.jsp</result>
+		</action>
+
+		<action name="AddDelieveryDetail" class="flipkart.action.deliveryProduct"
+			method="Cartexecute">
+			<result name="success">/PaymentGatway.jsp</result>
+		</action>
+
+		<action name="orderdetail" class="flipkart.action.deliveryProduct"
+			method="execute">
+			<result type="json"></result>
+		</action>
+		<action name="ADDINCART" class="flipkart.action.AddToCart"
+			method="insertToCart">
+			<result name="success">Description.jsp</result>
+		</action>
+		<action name="CartBill" class="flipkart.action.AddToCart"
+			method="DisplayBill">
+			<result name="success">CartBill.jsp</result>
+		</action>
+		<action name="Bill" class="flipkart.action.deliveryProduct"
+			method="mainBill">
+			<result name="success">MainBill.jsp</result>
+		</action>
+
+		<!-- Gazal Gupta -->
+		<action name="AddToCart" class="flipkart.action.AddToCart"
+			method="insertToCart">
+			<result name="success">AddToCart.jsp</result>
+		</action>
+
+		<action name="DisplayCartAll" class="flipkart.action.AddToCart"
+			method="DisplayCart">
+			<result name="success">AddToCart.jsp</result>
+		</action>
+
+		<action name="Remove" class="flipkart.action.AddToCart" method="RemoveFromCart">
+			<result name="success">AddToCart.jsp</result>
+		</action>
+
+		<action name="SaveQTY" class="flipkart.action.AddToCart"
+			method="saveQty">
+			<result name="success">AddToCart.jsp</result>
+		</action>
+
+		<action name="OrderAgain" class="flipkart.action.AddToCart"
+			method="insertToCart">
+			<result name="success">Test.jsp</result>
+		</action>
+
+		
+		<action name="ProductsInfoLab" class="flipkart.action.LabTest">
+				<interceptor-ref name="fileUpload">
+					<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack" />
+		<result name="success">/Labtest.jsp</result>	
+		</action>
+		
+		
+		
+		
+	</package>
+</struts>
